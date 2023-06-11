@@ -134,6 +134,7 @@ class LinkedList {
       listString += `( ${currentNode.getValue()} ) => `;
       currentNode = currentNode.getNextNode();
     }
+    listString += `( ${currentNode.getValue()} )`;
     return listString;
   }
 

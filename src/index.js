@@ -138,6 +138,21 @@ class LinkedList {
     return listString;
   }
 
+  //starts at 0
+  insertAtIndex(value, index) {
+    const nodeBefore = linkedListOne.getByIndex(index - 1);
+    const newNode = new Node(value);
+    const nodeAfter = nodeBefore.getNextNode();
+
+    newNode.setNextNode(nodeAfter);
+    return nodeBefore.setNextNode(newNode);
+  }
+
+  removeAtIndex(index) {
+    const nodeBefore = linkedListOne.getByIndex(index - 1);
+    const nodeAfter = nodeBefore.getNextNode().getNextNode();
+    nodeBefore.setNextNode(nodeAfter);
+  }
   // other functions
 }
 
@@ -171,5 +186,11 @@ console.log(linkedListOne.getIndexOf('A')); //2
 console.log(linkedListOne.getIndexOf('B')); //1
 console.log(linkedListOne.getIndexOf('H')); //null
 console.log(linkedListOne.getIndexOf(1)); //null
+
+linkedListOne.insertAtIndex('H', 2); //H in 3rd spot
+linkedListOne.insertAtIndex(5, 3); //5 in 4th spot
+
+linkedListOne.removeAtIndex(2); //remove the H
+linkedListOne.removeAtIndex(2); //remove the 5
 
 console.log(linkedListOne.toString());
